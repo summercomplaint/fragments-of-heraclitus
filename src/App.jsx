@@ -4,10 +4,10 @@ function App() {
   return (
     <div className="page-wrapper">
       <div className="page">
-      
-
+    
         {/* PRINT section */}
         <div className="section">
+           
           <h1 className="print-button">
             <a href="/Fragments_Of_Heraclitus.pdf" target="_blank" rel="noopener noreferrer">
               <pre>{` __________
@@ -15,8 +15,9 @@ function App() {
 | `}<span className="get-zine-label">GET ZINE</span>{` |
 |__________|`}</pre>
             </a>
+           
           </h1>
-
+          
           <div className="section-label">INSTRUCTIONS:</div>
           <ol>
             <li>
