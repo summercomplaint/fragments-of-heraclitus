@@ -1,0 +1,122 @@
+/* The page container sitting between the brown sidebars */
+.page-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* The "paper" itself */
+.page {
+  background: #fff9f1 url('/typewrittenBackgroundTileGrey.png') repeat;
+  background-size: 100% auto;
+  padding: 3rem 11rem;
+  min-height: 100vh;
+  position: relative;
+  font-size:1.2rem;
+}
+
+
+/* --- PDF download link --- */
+.download-link {
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #000000;
+  text-decoration: none;
+  border: 2px solid #000000;
+  padding: 0.8rem 1.5rem;
+  margin-bottom: 2.5rem;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.download-link:hover {
+  background: #1a1008;
+  color: #f5f0e8;
+}
+
+.print-button pre {
+  font-family: inherit;
+  font-size: inherit;
+  display: inline-block;
+  text-align: left;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.print-button {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+/* --- Section titles --- */
+.section-title {
+  text-align: center;
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+/* --- Ordered and unordered lists --- */
+.page ol, .page ul {
+  margin: 0.8rem 0 1.5rem 1.5rem;
+  padding: 0;
+}
+
+.page li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.3rem;
+}
+
+/* --- Section spacing --- */
+.section {
+  margin-bottom: 2.5rem;
+}
+
+/*.section-label {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.04em;
+}*/
+
+/* --- About body text --- */
+.about-text {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+
+/* --- Responsive --- */
+.sources li {
+  padding-left: 2em;
+  text-indent: -2em;
+}
+
+.sources a:link, .sources a:visited,
+.print-button a:link, .print-button a:visited {
+  color: #000000;
+}
+
+.print-button a:hover {
+  font-style: italic;
+}
+
+.get-zine-label {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 2rem 1.5rem;
+  }
+
+  .download-link {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+}
