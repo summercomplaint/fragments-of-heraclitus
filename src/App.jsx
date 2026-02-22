@@ -1,8 +1,14 @@
 import './App.css'
+import { SidebarScroller } from './SidebarScroller.jsx'
 
 function App() {
   return (
-    <div className="page-wrapper">
+    <>
+      <SidebarScroller side="left" />
+      <SidebarScroller side="right" />
+      <script data-goatcounter="https://fragments-zine.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+      <div className="page-wrapper">
       <div className="page">
     
         {/* PRINT section */}
@@ -92,6 +98,7 @@ function App() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

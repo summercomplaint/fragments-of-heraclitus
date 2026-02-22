@@ -8,7 +8,7 @@
 
 /* The "paper" itself */
 .page {
-  background: #fff9f1 url('/typewrittenBackgroundTileGrey.png') repeat;
+  background: #ffffff url('/typewrittenBackgroundTileGrey.png') repeat;
   background-size: 100% auto;
   padding: 3rem 11rem;
   min-height: 100vh;
@@ -90,6 +90,77 @@
 
 .get-zine-label {
   text-decoration: underline;
+}
+
+/* --- Sidebar settings --- tweak these to customize --- */
+:root {
+  --sidebar-thickness: 28px;      /* how wide the strip is */
+  --sidebar-gap: 0.5em;             /* gap between strip and page edge */
+  --sidebar-font-size: 1rem;
+  --sidebar-speed-left: 1500s;     /* higher = slower */
+  --sidebar-speed-right: 1500s;
+  --sidebar-show-above: 1100px;   /* min viewport width to show sidebars */
+
+  /* derived — don't touch these */
+  --sidebar-half: calc(var(--sidebar-thickness) / 2);
+  --page-half: 500px;             /* half of max-width on .page-wrapper */
+}
+
+/* --- Sidebars --- */
+/*
+  Each sidebar is a wide (100vh), short (--sidebar-thickness) element rotated 90°.
+  Positioning its CENTER where we want the strip, then rotating around that center,
+  gives us a vertical strip the right thickness in the right place.
+  The 14px values below are --sidebar-half (half the strip thickness).
+*/
+.sidebar {
+  position: fixed;
+  overflow: hidden;
+  display: none;
+  width: 100vh;
+  height: var(--sidebar-thickness);
+  top: calc(50vh - var(--sidebar-half));
+  transform-origin: center center;
+}
+
+.sidebar--left {
+  left: calc(50% - var(--page-half) - var(--sidebar-gap) - var(--sidebar-half) - 50vh);
+  transform: rotate(-90deg);
+}
+
+.sidebar--right {
+  left: calc(50% + var(--page-half) + var(--sidebar-gap) + var(--sidebar-half) - 50vh);
+  transform: rotate(90deg);
+}
+
+.sidebar__text {
+  display: inline-block;
+  white-space: nowrap;
+  color: white;
+  font-size: var(--sidebar-font-size);
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.9),
+    0 0 14px rgba(255,255,255,0.5),
+    0 0 28px rgba(255,255,255,0.2);
+  animation: ticker linear infinite;
+}
+
+.sidebar--left .sidebar__text {
+  animation-duration: var(--sidebar-speed-left);
+}
+
+.sidebar--right .sidebar__text {
+  animation-duration: var(--sidebar-speed-right);
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Only show sidebars when there's actually room */
+@media (min-width: 1100px) {
+  .sidebar { display: block; }
 }
 
 @media (max-width: 600px) {
