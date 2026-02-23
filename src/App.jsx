@@ -96,10 +96,10 @@ function App() {
             <li><a href="https://jujustoriesdotco.wordpress.com/wp-content/uploads/2017/09/heraclitus.pdf" target="_blank" rel="noopener noreferrer">jujustoriesdotco.wordpress.com/wp-content/uploads/2017/09/heraclitus.pdf</a></li>
           </ul>
         </div>
-        I also have a blank template if you want to make your own 30 page microzine.{' '}
+        i also have a blank template if you want to make your own 30 page microzine.{' '}
         <a href="/blank-template.pdf" target="_blank" rel="noopener noreferrer">
                Here
-            </a> {' '} is the pdf template if you want to draw firectly and {' '}
+            </a> {' '} is the pdf template if you want to draw directly and {' '}
         <a href="/blank-template.tex" download>
                here
             </a> {' '} is the tex file if you want to do it digitally.
