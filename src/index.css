@@ -4,6 +4,14 @@
   padding: 0;
 }
 
+a:link, a:visited {
+  color: inherit;
+}
+
+a:hover {
+  font-style: italic;
+}
+
 html, body {
   background: #000000;
   min-height: 100vh;

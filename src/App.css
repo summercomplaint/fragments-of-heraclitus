@@ -79,14 +79,6 @@
   text-indent: -2em;
 }
 
-.sources a:link, .sources a:visited,
-.print-button a:link, .print-button a:visited {
-  color: #000000;
-}
-
-.print-button a:hover {
-  font-style: italic;
-}
 
 .get-zine-label {
   text-decoration: underline;

@@ -43,7 +43,7 @@ function App() {
               cover, once near the bottom and once near the top.
             </li>
             <li>
-              Fold it closed and you're all done! Remember to underline and
+              Fold it closed, trim to taste, and you're all done! Remember to underline and
               dog-ear your favorite fragments :)
             </li>
           </ol>
@@ -86,7 +86,7 @@ function App() {
             you know me personally, i probably have extras to give you. i can't
             read ancient greek, so the translations used are cobbled together
             from a handful of sources i found online, edited for my personal
-            tastes.
+            tastes. Numbering is based on Chapter 3 of Early Greek Philosophy by John Burnet.
           </p>
 
           <ul className="sources">
@@ -96,7 +96,16 @@ function App() {
             <li><a href="https://jujustoriesdotco.wordpress.com/wp-content/uploads/2017/09/heraclitus.pdf" target="_blank" rel="noopener noreferrer">jujustoriesdotco.wordpress.com/wp-content/uploads/2017/09/heraclitus.pdf</a></li>
           </ul>
         </div>
+        I also have a blank template if you want to make your own 30 page microzine.{' '}
+        <a href="/blank-template.pdf" target="_blank" rel="noopener noreferrer">
+               Here
+            </a> {' '} is the pdf template if you want to draw firectly and {' '}
+        <a href="/blank-template.tex" download>
+               here
+            </a> {' '} is the tex file if you want to do it digitally.
       </div>
+      
+      
     </div>
     </>
   )
