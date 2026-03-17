@@ -1,0 +1,253 @@
+@font-face {
+  font-family: 'Blake';
+  src: url('/blake/Blake.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a:link, a:visited {
+  color: inherit;
+}
+
+a:hover {
+  font-style: italic;
+}
+
+body {
+  margin: 0;
+  background: #000000;
+  display: flex;
+  justify-content: center;
+  font-family: 'Blake', Georgia, serif;
+  
+}
+
+:root {
+  /* Position of the GET ZINE link, as a % of the top image's height.
+     Same unit/formula as --top-offset below. */
+  --get-zine-offset: 27;
+
+  /* Where the text starts, as a % of the top image's height.
+     0 = top of image, 100 = bottom (no overlap).
+     Top image aspect ratio: height = 56.05% of width (830/1481).
+     Formula: margin-top = (top-offset - 100) * 0.5605% of container width */
+  --top-offset: 58;
+
+  /* How far the bottom image overlaps UP into the text, as a % of the bottom image's height.
+     0 = no overlap, 100 = bottom image starts at top of textbox.
+     Bottom image aspect ratio: height = 63.51% of width (830/1307).
+     Formula: margin-top = -bottom-offset * 0.6351% of container width */
+  --bottom-offset: 60;
+
+  /* Four vertical lines, measured from the LEFT edge of the frame.
+     Outer pair: decorative lines matching the engraving's outer rectangle.
+     Inner pair: text column boundary matching the inner rectangle. */
+  --line-outer-left:  8.2%;
+  --line-inner-left:  14%;
+  --line-inner-right: 86.6%;
+  --line-outer-right: 92.3%;
+  --line-thickness:2px;
+
+  /* Position of the back-link, as a % of the bottom image's height from the bottom.
+     Bottom image aspect ratio: height = 63.51% of width (830/1307).
+     50 = roughly middle of the bottom image. */
+  --back-link-offset: 40;
+}
+
+/* ── Outer wrapper ── */
+.page-wrapper {
+  width: 100%;
+  max-width: 900px;
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+/* ── The full frame ── */
+.blake-frame {
+  position: relative;
+  background: white;
+}
+
+/* ── Four vertical lines spanning full frame height ── */
+.v-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--line-thickness);
+  background: #0d0d0d;
+  z-index: 0;
+  pointer-events: none;
+}
+.v-line--outer-left  { left: var(--line-outer-left); }
+.v-line--inner-left  { left: var(--line-inner-left); }
+.v-line--inner-right { left: var(--line-inner-right); }
+.v-line--outer-right { left: var(--line-outer-right); }
+
+/* ── Images ── */
+.bg-top {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.bg-bottom {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  margin-top: calc(-1 * var(--bottom-offset) * 0.6351%);
+}
+
+/* ── Content area: sits between the inner lines ── */
+.content-area {
+  position: relative;
+  z-index: 2;
+  /* Pull up into top image: (top-offset - 100)% of image height.
+     Image height = 56.05% of container width, so multiply by 0.5605. */
+  margin-top: calc((var(--top-offset) - 100) * 0.5605%);
+  margin-left: var(--line-inner-left);
+  margin-right: calc(100% - var(--line-inner-right));
+  padding: 3rem clamp(1rem, 5%, 2.5rem);
+  background: rgba(255, 255, 255, 0);
+  font-size: clamp(0.85rem, 2.5vw, 1.5rem);
+  line-height: 1.7;
+  text-shadow: 0.3px 0.3px 1px rgba(0, 0, 0, 0.25);
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* ── GET ZINE link: absolutely positioned over the top image ── */
+.get-zine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* margin-top % is width-relative on abs-positioned elements,
+     so this correctly expresses "% of top image height" */
+  margin-top: calc(var(--get-zine-offset) * 0.5605%);
+  z-index: 3;
+  text-align: center;
+  font-size: clamp(1.2rem, 4vw, 4rem);
+  letter-spacing: 0em;
+  text-decoration: underline;
+  color: inherit;
+}
+
+/* ── Section label & title ── */
+.section-label {
+  font-size: 0.85em;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: normal;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0em;
+  text-decoration:none
+}
+
+.section {
+  margin-top: 2rem;
+}
+
+/* ── Lists ── */
+.content-area ol,
+.content-area ul {
+  margin: 0.8rem 0 1.5rem 1.5rem;
+  padding: 0;
+}
+
+.content-area li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.3rem;
+}
+
+/* ── About text ── */
+.about-text {
+  margin-bottom: 1rem;
+}
+
+/* ── Back-link: absolutely positioned over the bottom image ── */
+.back-link {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: calc(var(--back-link-offset) * 0.6351%);
+  z-index: 3;
+  text-align: center;
+  font-size: clamp(0.85rem, 2.5vw, 1.5rem);
+  text-decoration: underline;
+  color: inherit;
+}
+
+/* ── Sidebar settings ── */
+:root {
+  --sidebar-thickness: 28px;
+  --sidebar-gap: 0.5em;
+  --sidebar-font-size: 1rem;
+  --sidebar-speed-left: 1200s;
+  --sidebar-speed-right: 1200s;
+  --sidebar-half: calc(var(--sidebar-thickness) / 2);
+  --page-half: 450px;
+}
+
+.sidebar {
+  position: fixed;
+  overflow: hidden;
+  display: none;
+  width: 100vh;
+  height: var(--sidebar-thickness);
+  top: calc(50vh - var(--sidebar-half));
+  transform-origin: center center;
+}
+
+.sidebar--left {
+  left: calc(50% - var(--page-half) - var(--sidebar-gap) - var(--sidebar-half) - 50vh);
+  transform: rotate(-90deg);
+}
+
+.sidebar--right {
+  left: calc(50% + var(--page-half) + var(--sidebar-gap) + var(--sidebar-half) - 50vh);
+  transform: rotate(90deg);
+}
+
+.sidebar__text {
+  display: inline-block;
+  white-space: nowrap;
+  color: white;
+  font-size: var(--sidebar-font-size);
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.9),
+    0 0 14px rgba(255, 255, 255, 0.5),
+    0 0 28px rgba(255, 255, 255, 0.2);
+  animation: ticker linear infinite;
+}
+
+.sidebar--left  .sidebar__text { animation-duration: var(--sidebar-speed-left); }
+.sidebar--right .sidebar__text { animation-duration: var(--sidebar-speed-right); }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (min-width: 1100px) {
+  .sidebar { display: block; }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --line-thickness:1px;
+
+}
+}

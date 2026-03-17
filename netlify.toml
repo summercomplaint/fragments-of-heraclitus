@@ -1,0 +1,3 @@
+[build]
+  command = "npm run build && cd blake && npm install && npm run build"
+  publish = "dist"
