@@ -104,12 +104,10 @@ function App() {
                here
             </a> {' '} is the tex file if you want to do it digitally.
         <div>
-          See also: <a href="/blake"> Blake on Beasts</a>
+          <br></br>
+          &gt; See also: <a href="/blake"> Blake on Beasts</a>
         </div>
       </div>
-      <footer style={{ marginTop: '2rem', fontSize: '0.85em' }}>
-        <a href="/blake">blake zine →</a>
-      </footer>
 
     </div>
     </>

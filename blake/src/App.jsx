@@ -40,9 +40,9 @@ function App() {
                 and birds from the Visions of the Daughters of Albion.
               </p>
               <p>
-                The Zine and Website use a custom font based on Blake's Lettering, which you can download as a WOFF2 File {' '} <a href="blake.woff3" download>
+                The Zine and Website use a custom font based on Blake's Lettering, which you can download as a WOFF2 File {' '} <a href="/blake.woff3" download>
                here
-            </a>. 
+            </a>. If you want to make your own 8-Page Zine, you can download a TeX template{' '}<a href="/blank.tex" download> here</a>.
               </p>
             </div>
 

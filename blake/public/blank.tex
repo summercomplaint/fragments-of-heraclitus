@@ -1,0 +1,189 @@
+\documentclass{article}
+\usepackage[margin=0in]{geometry}
+\usepackage[fontsize=8pt]{fontsize}
+\usepackage{parskip}
+%\usepackage{courier}
+%\renewcommand{\rmdefault}{\ttdefault}
+
+\usepackage{fontspec}
+\usepackage{graphicx}
+
+\setmainfont{Blake.ttf}
+\usepackage{tikz}
+
+\begin{document}
+
+
+\thispagestyle{empty}
+\noindent
+\begin{tikzpicture}[remember picture, overlay, shift={(current page.north west)}]
+  \pgfmathsetmacro{\ml}{0}
+  \pgfmathsetmacro{\pw}{\paperwidth/1in - 2*\ml}
+  \pgfmathsetmacro{\ph}{\paperheight/1in - 2*\ml}
+  \pgfmathsetmacro{\cw}{\pw/2}
+  \pgfmathsetmacro{\ch}{\ph/4}
+  \pgfmathsetmacro{\pbh}{\ch * 0.8}
+  \pgfmathsetmacro{\hcw}{\cw / 2}
+\pgfmathsetmacro{\hch}{\ch / 2}
+  \definecolor{gridgray}{gray}{0.9}
+
+  % Define your 8 cell texts here (2 cols x 4 rows, row-major order). the first two are the back and front cover
+  \def\celltext#1{%
+    \ifcase#1
+     {}\or {}\or
+     {}\or{}\or
+     {}\or{}\or
+     {}\or{}\or
+
+     
+\fi}
+
+%you can add images with this. the 0's tell you what row and column it will be in
+\node[anchor=center, rotate=90]
+  at (\ml in + 0*\cw in + \hcw in, -\ml in - 0*\ch in - \hch in)
+  {%put the images here 
+  };
+
+  % Define page numbers for each cell (configurable)
+  \def\cellnum#1{%
+    \ifcase#1
+     {}\or{1}\or{}\or{12}\or
+     {3}\or{5}\or{10}\or{8}\or
+\fi}
+
+  % Place text nodes — rotated 90° so left-to-right becomes bottom-to-top
+  \foreach \r in {0,...,3} {
+    \foreach \c in {0,...,1} {
+      \pgfmathtruncatemacro{\idx}{\r*2+\c}
+      \node[minimum width=\cw in, minimum height=\ch in,
+            anchor=north west, inner sep=4pt,align=center]
+        at (\ml in + \c*\cw in, -\ml in - \r*\ch in)
+        {\rotatebox{90}{\makebox[\ch in]{\parbox[c]{\pbh in}{\raggedright\celltext{\idx}}}}};
+    }
+  }
+
+  % Place page numbers
+  % Even rows (0,2): lower-right corner of cell
+  \foreach \r in {1,3} {
+    \foreach \c in {0,...,1} {
+      \pgfmathtruncatemacro{\idx}{\r*2+\c}
+      \node[anchor=south east, inner sep=20pt]
+        at (\ml in + \c*\cw in + \cw in, -\ml in - \r*\ch in - \ch in)
+        {\rotatebox{90}
+        {\cellnum{\idx}}};
+    }
+  }
+  % Odd rows (1,3): upper-right corner of cell
+  \foreach \r in {0,2} {
+    \foreach \c in {0,...,1} {
+      \pgfmathtruncatemacro{\idx}{\r*2+\c}
+      \node[anchor=north east, inner sep=20pt]
+        at (\ml in + \c*\cw in + \cw in, -\ml in - \r*\ch in)
+        {\rotatebox{90}
+        {\cellnum{\idx}}};
+    }
+  }
+
+\draw[gridgray, densely dashed, thick]
+      (\ml in, -\ml in - 2*\ch in)
+      -- (\ml in + \pw in, -\ml in - 2*\ch in);
+  
+
+  % Interior horizontal line (dashed) — 3 lines
+  \foreach \r in {1,3} {
+    \draw[gridgray, thick]
+      (\ml in, -\ml in - \r*\ch in)
+      -- (\ml in + \pw in, -\ml in - \r*\ch in);
+  }
+
+  % Interior vertical line (dashed) — 1 line
+  \draw[gridgray, densely dashed, thick]
+    (\ml in + \cw in, -\ml in)
+    -- (\ml in + \cw in, -\ml in - \ph in);
+
+\end{tikzpicture}
+
+\newpage
+\thispagestyle{empty}
+\noindent
+\begin{tikzpicture}[remember picture, overlay, shift={(current page.north west)}]
+  \pgfmathsetmacro{\ml}{0}
+  \pgfmathsetmacro{\pw}{\paperwidth/1in - 2*\ml}
+  \pgfmathsetmacro{\ph}{\paperheight/1in - 2*\ml}
+  \pgfmathsetmacro{\cw}{\pw/2}
+  \pgfmathsetmacro{\ch}{\ph/4}
+  \pgfmathsetmacro{\pbh}{\ch * 0.8}
+  \pgfmathsetmacro{\hcw}{\cw / 2}
+\pgfmathsetmacro{\hch}{\ch / 2}
+  \definecolor{gridgray}{gray}{0.9}
+
+  % Define your 8 cell texts here (2 cols x 4 rows, row-major order)
+  \def\celltext#1{%
+    \ifcase#1
+     {}\or {}\or
+     {}\or{}\or
+     {}\or{}\or
+     {}\or{}\or
+
+     
+\fi}
+
+
+  % Define page numbers for each cell (configurable)
+  %the unlabeled pages are the frontispiece and backispiece
+  \def\cellnum#1{%
+    \ifcase#1
+     {9}\or{7}\or{4}\or{6}\or
+     {}\or{11}\or{}\or{2}\or
+\fi}
+
+  % Place text nodes — rotated 90° so left-to-right becomes bottom-to-top
+  \foreach \r in {0,...,3} {
+    \foreach \c in {0,...,1} {
+      \pgfmathtruncatemacro{\idx}{\r*2+\c}
+      \node[minimum width=\cw in, minimum height=\ch in,
+      anchor=north west, inner sep=4pt]
+  at (\ml in + \c*\cw in, -\ml in - \r*\ch in)
+  {\rotatebox{90}{\parbox[c][\cw in][c]{\pbh in}{\raggedright\celltext{\idx}}}};
+    }
+  }
+
+  % Place page numbers
+  \foreach \r in {1,3} {
+    \foreach \c in {0,...,1} {
+      \pgfmathtruncatemacro{\idx}{\r*2+\c}
+      \node[anchor=south east, inner sep=20pt]
+        at (\ml in + \c*\cw in + \cw in, -\ml in - \r*\ch in - \ch in)
+        {\rotatebox{90}
+        {\cellnum{\idx}}};
+    }
+  }
+  \foreach \r in {0,2} {
+    \foreach \c in {0,...,1} {
+      \pgfmathtruncatemacro{\idx}{\r*2+\c}
+      \node[anchor=north east, inner sep=20pt]
+        at (\ml in + \c*\cw in + \cw in, -\ml in - \r*\ch in)
+        {\rotatebox{90}
+        {\cellnum{\idx}}};
+    }
+  }
+
+\draw[gridgray, densely dashed, thick]
+      (\ml in, -\ml in - 2*\ch in)
+      -- (\ml in + \pw in, -\ml in - 2*\ch in);
+  
+
+  % Interior horizontal line (dashed) — 3 lines
+  \foreach \r in {1,3} {
+    \draw[gridgray, thick]
+      (\ml in, -\ml in - \r*\ch in)
+      -- (\ml in + \pw in, -\ml in - \r*\ch in);
+  }
+
+  % Interior vertical line (dashed) — 1 line
+  \draw[gridgray, densely dashed, thick]
+    (\ml in + \cw in, -\ml in)
+    -- (\ml in + \cw in, -\ml in - \ph in);
+
+\end{tikzpicture}
+\end{document}
